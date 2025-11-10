@@ -55,16 +55,33 @@
                 }
               }
             },
-            "libraries": [
-               "-l../portaudio/bin/portaudio_x64.lib"
-            ],
-            "copies": [
-              {
-                "destination": "build/Release",
-                "files": [
-                  "portaudio/bin/portaudio_x64.dll"
+            "conditions": [
+              ['target_arch=="x64"', {
+                "libraries": [
+                  "-l../portaudio/bin/portaudio_x64.lib"
+                ],
+                "copies": [
+                  {
+                    "destination": "build/Release",
+                    "files": [
+                      "portaudio/bin/portaudio_x64.dll"
+                    ]
+                  }
                 ]
-              }
+              }],
+              ['target_arch=="ia32"', {
+                "libraries": [
+                  "-l../portaudio/bin/portaudio_x86.lib"
+                ],
+                "copies": [
+                  {
+                    "destination": "build/Release",
+                    "files": [
+                      "portaudio/bin/portaudio_x86.dll"
+                    ]
+                  }
+                ]
+              }]
             ]
           },
         ],
